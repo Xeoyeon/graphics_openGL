@@ -112,19 +112,19 @@ void myDisplay()
 	DrawBase(baseModel);
 
 
-	//�ι�° ��
+	//µÎ¹øÂ° ÆÈ
 	glm::mat4 armSegmentModel = glm::translate(baseModel, glm::vec3(0.0f, 0.4f, 0.0f));
 	armSegmentModel = glm::rotate(armSegmentModel, glm::radians(ShoulderAng), glm::vec3(0.0f, 0.0f, 1.0f));
 	DrawArmSegment(armSegmentModel);
 	
 
-	//����° ��
+	//¼¼¹øÂ° ÆÈ
 	glm::mat4 elbowModel = glm::translate(armSegmentModel, glm::vec3(0.0f, 0.5f, 0.0f));
 	elbowModel = glm::rotate(elbowModel, glm::radians(ElbowAng), glm::vec3(0.0f, 0.0f, 1.0f));
 	DrawArmSegment(elbowModel);
 
 
-	//�ո�
+	//¼Õ¸ñ
 	glm::mat4 wristModel = glm::translate(elbowModel, glm::vec3(0.0f, 0.5f, 0.0f));
 	wristModel = glm::rotate(wristModel, glm::radians(WristAng), glm::vec3(0.0f, 0.0f, 1.0f));
 	wristModel = glm::rotate(wristModel, glm::radians(WristTwistAng), glm::vec3(0.0f, 1.0f, 0.0f));
