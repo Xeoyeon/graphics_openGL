@@ -36,7 +36,7 @@ GLfloat FingerJoints[] = { 0.5f, 0.5f, 0.5f };
 int LeftButtonDown = 0;    // MOUSE STUFF
 int RobotControl = 0;
 
-//≥ª∞° √ﬂ∞°«— ∫Œ∫–
+//ÎÇ¥Í∞Ä Ï∂îÍ∞ÄÌïú Î∂ÄÎ∂Ñ
 int RightButtonDown = 0;
 
 // settings
@@ -115,19 +115,19 @@ void myDisplay()
 	DrawBase(baseModel);
 
 
-	//µŒπ¯¬∞ ∆»
+	//ÎëêÎ≤àÏß∏ Ìåî
 	glm::mat4 armSegmentModel = glm::translate(baseModel, glm::vec3(0.0f, 0.4f, 0.0f));
 	armSegmentModel = glm::rotate(armSegmentModel, glm::radians(ShoulderAng), glm::vec3(0.0f, 0.0f, 1.0f));
 	DrawArmSegment(armSegmentModel);
 	
 
-	//ººπ¯¬∞ ∆»
+	//ÏÑ∏Î≤àÏß∏ Ìåî
 	glm::mat4 elbowModel = glm::translate(armSegmentModel, glm::vec3(0.0f, 0.5f, 0.0f));
 	elbowModel = glm::rotate(elbowModel, glm::radians(ElbowAng), glm::vec3(0.0f, 0.0f, 1.0f));
 	DrawArmSegment(elbowModel);
 
 
-	//º’∏Ò
+	//ÏÜêÎ™©
 	glm::mat4 wristModel = glm::translate(elbowModel, glm::vec3(0.0f, 0.5f, 0.0f));
 	wristModel = glm::rotate(wristModel, glm::radians(WristAng), glm::vec3(0.0f, 0.0f, 1.0f));
 	wristModel = glm::rotate(wristModel, glm::radians(WristTwistAng), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -153,7 +153,7 @@ void myDisplay()
 	fingertipModel2 = glm::rotate(fingertipModel2, glm::radians(-FingerAng2), glm::vec3(0.0f, 0.0f, 1.0f));
 	DrawFingerTip(fingertipModel2);
 
-	//≥ª∞° √ﬂ∞°«— ∫Œ∫–
+	
 	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 	glm::mat4 view = camera.GetViewMatrix();
 
@@ -281,7 +281,7 @@ void processInput(GLFWwindow* window, int key, int scancode, int action, int mod
 	else if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 
-	//≥ª∞° √ﬂ∞°«— ∫Œ∫–
+	
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		camera.ProcessKeyboard(FORWARD, deltaTime*4);
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -312,7 +312,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 		firstMouse = false;
 	}
 
-	float xoffset = (float)(xpos - lastX); /// ºˆ¡§ : SCR_WIDTH;
+	float xoffset = (float)(xpos - lastX); /// ÏàòÏ†ï : SCR_WIDTH;
 	float yoffset = (float)(lastY - ypos); /// SCR_HEIGHT; // reversed since y-coordinates go from bottom to top
 
 	lastX = (float)xpos;
@@ -329,7 +329,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 		case 4: FingerAng1 += yoffset * 90; FingerAng2 += xoffset * 180; break;
 		}
 	}
-	// ≥ª∞° √ﬂ∞°«— ∫Œ∫–
+	// ÎÇ¥Í∞Ä Ï∂îÍ∞ÄÌïú Î∂ÄÎ∂Ñ
 	if (RightButtonDown) 
 	{
 		camera.ProcessMouseMovement(xoffset, yoffset);
@@ -347,7 +347,7 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 	{
 		LeftButtonDown = 0;
 	}
-	//≥ª∞° √ﬂ∞°«— ∫Œ∫–
+	
 	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
 	{
 		RightButtonDown = 1;
